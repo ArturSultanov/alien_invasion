@@ -1,5 +1,4 @@
-**"Alien Invasion"** Python Game
-
+# **"Alien Invasion"** Python Game
 
 Each player controls a ship that is located in the middle of the bottom edge of the screen. 
 The player moves the ship to the right and left with the control keys or the cursor; the spacebar is used for shooting. 
