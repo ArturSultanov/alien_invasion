@@ -19,7 +19,7 @@ def run_game():
     # Starting the main game cycle.
     while True:
         # Tracking keyboard and mouse events.
-        check_ivents()
+        check_events()
         screen.fill(ai_settings.bg_color)
         ship.blitme()
         pygame.display.flip()
