@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from game_functions import *
 
 
 def run_game():
@@ -18,9 +19,7 @@ def run_game():
     # Starting the main game cycle.
     while True:
         # Tracking keyboard and mouse events.
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        check_ivents()
         screen.fill(ai_settings.bg_color)
         ship.blitme()
         pygame.display.flip()
