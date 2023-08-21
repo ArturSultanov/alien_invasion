@@ -1,5 +1,6 @@
 import pygame
 
+
 class Ship():
 
     def __init__(self, screen):
@@ -7,7 +8,9 @@ class Ship():
         self.screen = screen
 
         # Loading starship image
-        self.image = pygame.image.load('images/ship-0.bmp')
+        self.image = pygame.transform.scale(
+                     pygame.image.load('images/ship-0.bmp'),
+                     (80, 61))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
@@ -18,4 +21,3 @@ class Ship():
     def blitme(self):
         """Draws the ship at the current position."""
         self.screen.blit(self.image, self.rect)
-
