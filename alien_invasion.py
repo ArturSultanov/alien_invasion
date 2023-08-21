@@ -20,9 +20,7 @@ def run_game():
     while True:
         # Tracking keyboard and mouse events.
         check_events()
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-        pygame.display.flip()
+        update_screen(ai_settings, screen, ship)
 
 
 run_game()
