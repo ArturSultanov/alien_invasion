@@ -2,7 +2,6 @@ import pygame
 
 
 class Ship():
-
     def __init__(self, ai_settings, screen):
         """ Initializes the ship with start coordinates."""
         self.screen = screen

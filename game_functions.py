@@ -1,6 +1,6 @@
 import sys
 import pygame
-from bullet import *
+from bullet import Bullet
 
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
@@ -43,11 +43,12 @@ def check_events(ai_settings, screen, ship, bullets):
             #     ship.moving_left = False
 
 
-def update_screen(ai_settings, screen, ship, bullets):
+def update_screen(ai_settings, screen, ship, alien, bullets):
     """Updates the images on the screen and displays a new screen."""
     # The screen is redrawn every time the loop passes.
     screen.fill(ai_settings.bg_color)
     ship.blitme()
+    alien.blitme()
     for bullet in bullets:
         bullet.draw_bullet()
     pygame.display.flip()
