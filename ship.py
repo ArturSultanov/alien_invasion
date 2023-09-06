@@ -10,7 +10,8 @@ class Ship():
         # Loading starship image
         self.image = pygame.transform.scale(
                      pygame.image.load('images/ship-0.bmp'),
-                     (80, 61))
+                     (95, 72))
+        # self.image = pygame.image.load('images/ship-0.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
