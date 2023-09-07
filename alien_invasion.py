@@ -31,8 +31,9 @@ def run_game():
         # Tracking keyboard and mouse events.
         check_events(ai_settings, screen, ship, bullets)
         ship.update_moving()
-
+        update_aliens(ai_settings, aliens)
         bullets.update()
+
         for bullet in bullets.copy():
             if bullet.rect.bottom <= 0:
                 bullets.remove(bullet)
