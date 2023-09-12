@@ -1,4 +1,5 @@
 import sys
+from time import sleep
 import pygame
 from bullet import Bullet
 from alien import Alien
@@ -129,7 +130,7 @@ def update_bullets(ai_settings, screen, ship, bullets, aliens):
         create_fleet(ai_settings, screen, ship, aliens)
 
 
-def update_aliens(ai_settings, ship, aliens):
+def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
     """Checks if the fleet has reached the edge of the screen,
        then updates the positions of all aliens in the fleet."""
     check_fleet_edges(ai_settings, aliens)
@@ -137,5 +138,31 @@ def update_aliens(ai_settings, ship, aliens):
 
     # Check alien-ship collision
     if pygame.sprite.spritecollideany(ship, aliens):
-        print("Ship hit!!!")
+        ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
+        # print("Ship hit!!!")
 
+
+def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
+    """Detect alien and ship collision"""
+    # Reduce ship lives by 1 if collision is detected
+    stats.ship_lives_left -= 1
+
+    # Clear lists of aliens and bullets
+    aliens.empty()
+    bullets.empty()
+
+    # Create new fleet and place ship at the center point
+    create_fleet(ai_settings, screen, ship, aliens)
+    ship.center_ship()
+
+    # Pause
+    sleep(0.5)
+
+
+def check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets):
+    """Check if there is alien at the bottom of the screen"""
+    screen_rect = screen.get_rect()
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= screen_rect.bottom:
+            ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
+            break
