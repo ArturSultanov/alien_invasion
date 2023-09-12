@@ -32,10 +32,12 @@ def run_game():
     while True:
         # Tracking keyboard and mouse events.
         check_events(ai_settings, screen, ship, bullets)
-        ship.update_moving()
-        update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
-        check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
-        update_bullets(ai_settings, screen, ship, bullets, aliens)
+        if stats.game_active:
+            ship.update_moving()
+            update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+            check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
+            update_bullets(ai_settings, screen, ship, bullets, aliens)
+
         update_screen(ai_settings, screen, ship, aliens, bullets)
 
 

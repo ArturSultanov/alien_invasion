@@ -144,19 +144,22 @@ def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
 
 def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
     """Detect alien and ship collision"""
-    # Reduce ship lives by 1 if collision is detected
-    stats.ship_lives_left -= 1
+    if stats.ships_lives_left > 0:
+        # Reduce ship lives by 1 if collision is detected
+        stats.ships_lives_left -= 1
 
-    # Clear lists of aliens and bullets
-    aliens.empty()
-    bullets.empty()
+        # Clear lists of aliens and bullets
+        aliens.empty()
+        bullets.empty()
 
-    # Create new fleet and place ship at the center point
-    create_fleet(ai_settings, screen, ship, aliens)
-    ship.center_ship()
+        # Create new fleet and place ship at the center point
+        create_fleet(ai_settings, screen, ship, aliens)
+        ship.center_ship()
 
-    # Pause
-    sleep(0.5)
+        # Pause
+        sleep(0.5)
+    else:
+        stats.game_active = False
 
 
 def check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets):
