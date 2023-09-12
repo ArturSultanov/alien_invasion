@@ -32,12 +32,8 @@ def run_game():
         check_events(ai_settings, screen, ship, bullets)
         ship.update_moving()
         update_aliens(ai_settings, aliens)
-        bullets.update()
 
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-        # print(len(bullets))
+        update_bullets(bullets, aliens)
 
         update_screen(ai_settings, screen, ship, aliens, bullets)
 

@@ -108,9 +108,21 @@ def change_fleet_direction(ai_settings, aliens):
     ai_settings.fleet_direction *= -1
 
 
+def update_bullets(bullets, aliens):
+    # Update bullets position and remove bullets
+    for bullet in bullets.copy():
+        bullet.update()
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+        # print(len(bullets))
+
+    # Check if bullets have collisions with aliens
+    # If they have - delete bullet and alien
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
+
 def update_aliens(ai_settings, aliens):
     """Checks if the fleet has reached the edge of the screen,
        then updates the positions of all aliens in the fleet."""
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
-
