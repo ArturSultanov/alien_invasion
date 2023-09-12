@@ -31,7 +31,7 @@ def run_game():
         # Tracking keyboard and mouse events.
         check_events(ai_settings, screen, ship, bullets)
         ship.update_moving()
-        update_aliens(ai_settings, aliens)
+        update_aliens(ai_settings, ship, aliens)
         update_bullets(ai_settings, screen, ship, bullets, aliens)
         update_screen(ai_settings, screen, ship, aliens, bullets)
 

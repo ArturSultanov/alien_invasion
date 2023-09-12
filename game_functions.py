@@ -129,8 +129,13 @@ def update_bullets(ai_settings, screen, ship, bullets, aliens):
         create_fleet(ai_settings, screen, ship, aliens)
 
 
-def update_aliens(ai_settings, aliens):
+def update_aliens(ai_settings, ship, aliens):
     """Checks if the fleet has reached the edge of the screen,
        then updates the positions of all aliens in the fleet."""
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
+
+    # Check alien-ship collision
+    if pygame.sprite.spritecollideany(ship, aliens):
+        print("Ship hit!!!")
+
