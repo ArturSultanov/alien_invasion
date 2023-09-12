@@ -11,7 +11,7 @@ class Alien(Sprite):
         # Loading alien image
         self.image = pygame.transform.scale(
             pygame.image.load('images/ship-1.bmp'),
-            (90, 75))
+            (79, 60))
         # self.image = pygame.image.load('images/ship-1.bmp')
         self.rect = self.image.get_rect()
         # Every alien appears at the left top corner
