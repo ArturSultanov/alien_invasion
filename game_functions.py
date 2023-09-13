@@ -45,8 +45,11 @@ def check_events(ai_settings, screen, ship, bullets):
             #     ship.moving_left = False
 
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     """Updates the images on the screen and displays a new screen."""
+    if not stats.game_active():
+        play_button.draw_button()
+
     # The screen is redrawn every time the loop passes.
     screen.fill(ai_settings.bg_color)
     ship.blitme()
