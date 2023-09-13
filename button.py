@@ -26,10 +26,10 @@ class Button():
                                         self.button_text_color,
                                         self.button_color)
         self.msg_img_rect = self.msg_img.get_rect()
-        self.msg_image_rect.center = self.rect.center
+        self.msg_img_rect.center = self.rect.center
 
     def draw_button(self):
         # Display button at the screen
         self.screen.fill(self.button_color, self.rect)
-        self.screen.blit(self.msg_image, self.msg_image_rect)
+        self.screen.blit(self.msg_img, self.msg_img_rect)
 

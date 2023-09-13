@@ -17,6 +17,12 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         sys.exit()
 
 
+def check_play_button(stats, play_button, mouse_x, mouse_y):
+    """Starts a new game when the Play button is pressed."""
+    if play_button.rect.collidepoint(mouse_x, mouse_y):
+        stats.game_active = True
+
+
 def check_keyup_events(event, ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
@@ -24,7 +30,7 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(ai_settings, screen, ship, bullets):
+def check_events(ai_settings, screen,stats, play_button, ship, bullets):
     """Handles keystrokes and mouse events."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -43,17 +49,19 @@ def check_events(ai_settings, screen, ship, bullets):
             #     ship.moving_right = False
             # if event.key == pygame.K_LEFT:
             #     ship.moving_left = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            check_play_button(stats, play_button, mouse_x, mouse_y)
 
 
 def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     """Updates the images on the screen and displays a new screen."""
-    if not stats.game_active():
-        play_button.draw_button()
-
     # The screen is redrawn every time the loop passes.
     screen.fill(ai_settings.bg_color)
     ship.blitme()
     aliens.draw(screen)
+    if not stats.game_active:
+        play_button.draw_button()
     for bullet in bullets:
         bullet.draw_bullet()
     pygame.display.flip()

@@ -33,7 +33,7 @@ def run_game():
     # Starting the main game cycle.
     while True:
         # Tracking keyboard and mouse events.
-        check_events(ai_settings, screen, ship, bullets)
+        check_events(ai_settings, screen, stats, play_button, ship, bullets)
         if stats.game_active:
             ship.update_moving()
             update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
